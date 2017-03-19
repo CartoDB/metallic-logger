@@ -9,6 +9,8 @@ import SighupListener from './sighup-listener'
 import LogCommandListener from './log-command-listener'
 import defaults from './defaults'
 
+export { default as LoggerInterface } from './logger-interface'
+
 export default class LoggerFactory {
   static create (opts) {
     const options = { ...opts, ...defaults }

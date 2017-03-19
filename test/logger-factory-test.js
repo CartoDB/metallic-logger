@@ -1,6 +1,6 @@
 import assert from 'assert'
-import LoggerInterface from '../src/logger-interface'
 import LoggerFactory from '../src'
+import { LoggerInterface } from '../src'
 
 describe('logger-factory', function () {
   it('.create() should return a Logger instance', function () {

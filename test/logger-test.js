@@ -1,7 +1,7 @@
 import assert from 'assert'
 import sinon from 'sinon'
 import { ListenerInterface } from 'metallic-listeners'
-import LoggerInterface from '../src/logger-interface'
+import { LoggerInterface } from '../src'
 import Logger from '../src/logger'
 
 class LoggerProvider extends LoggerInterface {}
