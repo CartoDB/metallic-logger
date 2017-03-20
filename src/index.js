@@ -10,6 +10,7 @@ import LogCommandListener from './log-command-listener'
 import defaults from './defaults'
 
 export { default as LoggerInterface } from './logger-interface'
+export { default as defaults } from './defaults'
 
 export default class LoggerFactory {
   static create (opts) {
