@@ -29,6 +29,7 @@
   "dependencies": {
     "bunyan": "~1.8.8",
     "metallic-errors": "^0.1.1",
+    "metallic-interfaces": "^0.1.0",
     "metallic-listeners": "^0.1.0",
     "read-pkg-up": "~2.0.0"
   },
