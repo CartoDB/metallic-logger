@@ -1,5 +1,10 @@
 # Metallic Logger ChangeLog
 
+## v0.3.2 (2017-03-20)
+
+ - Use metallic-interfaces
+
+
 ## v0.3.1 (2017-03-20)
 
  - Do not expose default options
