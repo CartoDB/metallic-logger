@@ -1,5 +1,10 @@
 # Metallic Logger ChangeLog
 
+## v0.3.3 (2017-03-26)
+
+ - Retrieve dummy-logger whether it creates a new child
+
+
 ## v0.3.2 (2017-03-20)
 
  - Use metallic-interfaces
