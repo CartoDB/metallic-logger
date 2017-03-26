@@ -2,7 +2,7 @@ import Bunyan from 'bunyan'
 import { Listeners } from 'metallic-listeners'
 import { FactoryInterface } from 'metallic-interfaces'
 import Logger from './logger'
-import DisabledLogger from './disabled-logger'
+import DummyLogger from './dummy-logger'
 import LoggerOutputs from './outputs/logger-outputs'
 import ConsoleOutput from './outputs/console-output'
 import FileOutput from './outputs/file-output'
@@ -15,10 +15,10 @@ export { default as LoggerInterface } from './logger-interface'
 export default class LoggerFactory extends FactoryInterface {
   static create (opts) {
     const options = { ...defaults, ...opts }
-    const dummyLogger = new DisabledLogger()
+    const dummyLogger = new DummyLogger()
 
     if (!options.enabled) {
-      return dummyLogger
+      return new Logger(dummyLogger)
     }
 
     const path = options.path

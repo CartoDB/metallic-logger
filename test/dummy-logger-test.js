@@ -1,9 +1,9 @@
 import assert from 'assert'
-import DisabledLogger from '../src/disabled-logger'
+import DummyLogger from '../src/dummy-logger'
 
 describe('logger', function () {
   beforeEach(function () {
-    this.logger = new DisabledLogger()
+    this.logger = new DummyLogger()
   })
 
   it('.child() should do nothing', function () {

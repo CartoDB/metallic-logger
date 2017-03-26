@@ -1,10 +1,14 @@
 import LoggerInterface from './logger-interface'
+import { ListenerInterface } from 'metallic-listeners'
 
 export default class Logger extends LoggerInterface {
   constructor (logger, reopenFileStreamsListeners) {
     super()
     this.provider = logger
-    reopenFileStreamsListeners.listen(() => this.reopenFileStreams())
+
+    if (reopenFileStreamsListeners instanceof ListenerInterface) {
+      reopenFileStreamsListeners.listen(() => this.reopenFileStreams())
+    }
   }
 
   reopenFileStreams () {

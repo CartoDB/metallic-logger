@@ -7,6 +7,10 @@ export default class LoggerInterface {
     }
   }
 
+  reopenFileStreams () {
+    throw new UnimplementedError()
+  }
+
   debug () {
     throw new UnimplementedError()
   }
