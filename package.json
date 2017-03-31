@@ -27,15 +27,11 @@
     "test": "src/test"
   },
   "dependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
     "bunyan": "^1.8.9",
     "metallic-errors": "^0.1.1",
     "metallic-interfaces": "^0.1.0",
     "metallic-listeners": "^0.1.0",
-    "read-pkg-up": "^2.0.0",
-    "source-map-support": "^0.4.14",
-    "standard": "^9.0.2"
+    "read-pkg-up": "^2.0.0"
   },
   "scripts": {
     "build": "babel src -d lib --source-maps inline",
