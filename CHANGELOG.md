@@ -1,5 +1,10 @@
 # Metallic Logger ChangeLog
 
+## v0.4.0 (2017-04-06)
+
+ - Upgrade dev-dependencies
+
+
 ## v0.3.3 (2017-03-26)
 
  - Retrieve dummy-logger whether it creates a new child
