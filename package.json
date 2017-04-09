@@ -27,10 +27,10 @@
     "test": "src/test"
   },
   "dependencies": {
-    "bunyan": "^1.8.9",
-    "metallic-errors": "^0.1.1",
-    "metallic-interfaces": "^0.1.0",
-    "metallic-listeners": "^0.1.0",
+    "bunyan": "^1.8.10",
+    "metallic-errors": "^0.1.3",
+    "metallic-interfaces": "^0.1.3",
+    "metallic-listeners": "^0.2.0",
     "read-pkg-up": "^2.0.0"
   },
   "scripts": {
@@ -46,14 +46,14 @@
     "test:watch": "npm run test -- -w"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "sinon": "^2.1.0",
     "source-map-support": "^0.4.14",
-    "standard": "^9.0.2"
+    "standard": "^10.0.1"
   },
   "standard": {
     "env": {
