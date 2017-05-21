@@ -1,6 +1,6 @@
 import assert from 'assert'
-import LoggerOutputs from '../src/outputs/logger-outputs'
-import LoggerOutputInterface from '../src/outputs/logger-output-interface'
+import LoggerOutputs from '../../src/outputs/logger-outputs'
+import LoggerOutputInterface from '../../src/outputs/logger-output-interface'
 
 class LoggerOutput extends LoggerOutputInterface {
   constructor (available = true) {

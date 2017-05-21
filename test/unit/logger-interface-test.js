@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { LoggerInterface } from '../src'
+import { LoggerInterface } from '../../src'
 
 class Logger extends LoggerInterface {}
 
@@ -10,6 +10,10 @@ describe('logger-interface', function () {
 
   it('create interface directly with "new" should throw error', function () {
     assert.throws(() => new LoggerInterface(), 'LoggerInterface cannot be directly constructed')
+  })
+
+  it('.reopenFileStreams() should throw "Unimplemented method" error', function () {
+    assert.throws(() => this.loggerInterface.reopenFileStreams(), 'Unimplemented method')
   })
 
   it('.debug() should throw "Unimplemented method" error', function () {

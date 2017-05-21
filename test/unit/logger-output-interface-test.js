@@ -1,5 +1,5 @@
 import assert from 'assert'
-import LoggerOutputInterface from '../src/outputs/logger-output-interface'
+import LoggerOutputInterface from '../../src/outputs/logger-output-interface'
 
 class LoggerOutput extends LoggerOutputInterface {}
 

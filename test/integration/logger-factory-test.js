@@ -1,5 +1,5 @@
 import assert from 'assert'
-import LoggerFactory, { LoggerInterface } from '../src'
+import LoggerFactory, { LoggerInterface } from '../../src'
 
 describe('logger-factory', function () {
   it('.create() should return a Logger instance', function () {
@@ -13,7 +13,7 @@ describe('logger-factory', function () {
     assert.ok(logger instanceof LoggerInterface)
   })
 
-  it('.create() should return a Logger instance when disabled', function () {
+  it('.create() should return "undefined" when disabled', function () {
     const logger = LoggerFactory.create({
       enabled: false,
       name: 'name',
@@ -22,6 +22,6 @@ describe('logger-factory', function () {
       }
     })
 
-    assert.ok(logger instanceof LoggerInterface)
+    assert.ok(logger === undefined)
   })
 })

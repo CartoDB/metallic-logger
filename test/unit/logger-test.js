@@ -1,24 +1,36 @@
 import assert from 'assert'
 import sinon from 'sinon'
-import { ListenerInterface } from 'metallic-listeners'
-import { LoggerInterface } from '../src'
-import Logger from '../src/logger'
+import { LoggerInterface } from '../../src'
+import Logger from '../../src/logger'
 
 class LoggerProvider extends LoggerInterface {}
-class SighupListener extends ListenerInterface {}
 
 describe('logger', function () {
   beforeEach(function () {
     this.sandbox = sinon.sandbox.create()
     this.provider = new LoggerProvider()
-    this.sighupListener = new SighupListener()
-    this.sighupListenerListenStub = this.sandbox.stub(this.sighupListener, 'listen')
     this.logger = new Logger(this.provider, this.sighupListener)
   })
 
   afterEach(function () {
-    assert.ok(this.sighupListenerListenStub.calledOnce)
     this.sandbox.restore()
+  })
+
+  it('.reopenFileStreams() should reopen file stream', function () {
+    this.provider.reopenFileStreams = this.sandbox.spy()
+
+    this.logger.reopenFileStreams()
+
+    assert.ok(this.provider.reopenFileStreams.calledOnce)
+  })
+
+  it('.child() should create a sublogger instance', function () {
+    this.provider.child = this.sandbox.spy()
+    const requestId = 'wadus-identifier'
+
+    this.logger.child(requestId)
+
+    assert.ok(this.provider.child.calledWithExactly({ requestId }))
   })
 
   it('.debug() should log at debug level', function () {
