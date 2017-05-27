@@ -30,6 +30,15 @@ describe('logger-outputs', function () {
     assert.equal(this.loggerOutputs.size, 1)
   })
 
+  it('.add() should not add output when it is not available', function () {
+    const available = false
+    const loggerOutput = new LoggerOutput(available)
+
+    this.loggerOutputs.add(loggerOutput)
+
+    assert.equal(this.loggerOutputs.size, 0)
+  })
+
   it('.add() twice the same logger-output should just add once', function () {
     const loggerOutput = new LoggerOutput()
 
