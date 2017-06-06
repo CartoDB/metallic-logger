@@ -1,5 +1,11 @@
 # Metallic Logger ChangeLog
 
+## v0.6.0 (2017-06-06)
+
+ - Migrate form instanbul to nyc for code coverage
+ - Added package-lock.json
+ - Refactor listeners through decorators
+
 ## v0.5.0 (2017-04-09)
 
  - Upgrade dependencies
