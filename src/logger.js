@@ -1,9 +1,9 @@
 import LoggerInterface from './logger-interface'
 
 export default class Logger extends LoggerInterface {
-  constructor (logger) {
+  constructor ({ provider }) {
     super()
-    this.provider = logger
+    this.provider = provider
   }
 
   reopenFileStreams () {

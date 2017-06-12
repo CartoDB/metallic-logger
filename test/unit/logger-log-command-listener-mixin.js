@@ -17,10 +17,13 @@ describe('logger-log-command-listener-mixin', function () {
     this.sandbox = sinon.sandbox.create()
 
     this.emitter = new EventEmitter()
-    this.listener = new LogCommandListener(this.emitter)
+    this.logCommandListener = new LogCommandListener(this.emitter)
     this.provider = new DummyLogger()
 
-    this.logger = new EventedLogger(this.listener, this.provider)
+    this.logger = new EventedLogger({
+      logCommandListener: this.logCommandListener,
+      provider: this.provider
+    })
   })
 
   afterEach(function () {
@@ -53,13 +56,16 @@ describe('logger-log-command-listener-mixin', function () {
     const EventedLogger = LoggerLogCommandListenerMixin.mix(DummyLogger)
 
     this.emitter = new EventEmitter()
-    this.listener = new DummyListener(this.emitter)
+    this.logCommandListener = new DummyListener(this.emitter)
     this.provider = new DummyLogger()
 
-    const listenerListenSpy = this.sandbox.spy(this.listener, 'listen')
+    const logCommandListenerListenSpy = this.sandbox.spy(this.logCommandListener, 'listen')
 
-    this.logger = new EventedLogger(this.listener, this.provider)
+    this.logger = new EventedLogger({
+      logCommandListener: this.logCommandListener,
+      provider: this.provider
+    })
 
-    assert.ok(listenerListenSpy.notCalled)
+    assert.ok(logCommandListenerListenSpy.notCalled)
   })
 })

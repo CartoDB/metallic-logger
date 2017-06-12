@@ -11,25 +11,25 @@ import LoggerLogCommandListenerMixin from './logger-log-command-listener-mixin'
 import defaults from './defaults'
 
 export default class LoggerFactory extends FactoryInterface {
-  static create (opts) {
-    const options = { ...defaults, ...opts }
+  static create ({ options }) {
+    const opts = { ...defaults, ...options }
 
-    if (!options.enabled) {
+    if (!opts.enabled) {
       return
     }
 
-    const path = options.path
-    const consoleEnabled = options.console
+    const path = opts.path
+    const consoleEnabled = opts.console
 
     const loggerOutputs = new LoggerOutputs()
       .add(new ConsoleOutput(consoleEnabled))
       .add(new FileOutput(path))
 
     const bunyan = Bunyan.createLogger({
-      name: options.name,
+      name: opts.name,
       streams: loggerOutputs.toArray(),
       serializers: Bunyan.stdSerializers,
-      ...options.extra
+      ...opts.extra
     })
 
     const sighupListener = new SighupListener(process)
@@ -40,6 +40,10 @@ export default class LoggerFactory extends FactoryInterface {
       )
     )
 
-    return new EventedLogger(sighupListener, logCommandListener, bunyan)
+    return new EventedLogger({
+      sighupListener,
+      logCommandListener,
+      provider: bunyan
+    })
   }
 }

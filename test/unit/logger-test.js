@@ -9,7 +9,9 @@ describe('logger', function () {
   beforeEach(function () {
     this.sandbox = sinon.sandbox.create()
     this.provider = new LoggerProvider()
-    this.logger = new Logger(this.provider, this.sighupListener)
+    this.logger = new Logger({
+      provider: this.provider
+    })
   })
 
   afterEach(function () {

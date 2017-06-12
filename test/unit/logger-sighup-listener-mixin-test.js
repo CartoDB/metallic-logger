@@ -17,10 +17,13 @@ describe('logger-sighup-listener-mixin', function () {
     this.sandbox = sinon.sandbox.create()
 
     this.emitter = new EventEmitter()
-    this.listener = new SighupListener(this.emitter)
+    this.sighupListener = new SighupListener(this.emitter)
     this.provider = new DummyLogger()
 
-    this.logger = new EventedLogger(this.listener, this.provider)
+    this.logger = new EventedLogger({
+      sighupListener: this.sighupListener,
+      provider: this.provider
+    })
   })
 
   afterEach(function () {
@@ -44,13 +47,16 @@ describe('logger-sighup-listener-mixin', function () {
     const EventedLogger = LoggerSighupListenerMixin.mix(DummyLogger)
 
     this.emitter = new EventEmitter()
-    this.listener = new DummyListener(this.emitter)
+    this.sighupListener = new DummyListener(this.emitter)
     this.provider = new DummyLogger()
 
-    const listenerListenSpy = this.sandbox.spy(this.listener, 'listen')
+    const sighupListenerListenSpy = this.sandbox.spy(this.sighupListener, 'listen')
 
-    this.logger = new EventedLogger(this.listener, this.provider)
+    this.logger = new EventedLogger({
+      sighupListener: this.sighupListener,
+      provider: this.provider
+    })
 
-    assert.ok(listenerListenSpy.notCalled)
+    assert.ok(sighupListenerListenSpy.notCalled)
   })
 })
