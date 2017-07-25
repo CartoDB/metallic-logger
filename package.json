@@ -1,6 +1,6 @@
 {
   "name": "metallic-logger",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "JSON logging library for CARTO services",
   "main": "lib/index.js",
   "repository": {
