@@ -1,5 +1,12 @@
 # Metallic Logger ChangeLog
 
+## v0.8.0 (2017-07-25)
+
+ - Be able to deactivate file output
+ - Default name to dependent parent module's name
+ - Add documentation
+
+
 ## v0.7.0 (2017-06-25)
 
  - Pass arguments to constructors in one object

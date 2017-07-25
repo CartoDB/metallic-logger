@@ -4,9 +4,9 @@ import LoggerFactory, { LoggerInterface } from '../../src'
 describe('logger-factory', function () {
   it('.create() should return a Logger instance', function () {
     const options = {
-      name: 'name',
+      name: 'wadus',
       extra: {
-        role: 'role'
+        role: 'wadus-role'
       }
     }
     const logger = LoggerFactory.create({ options })
@@ -17,9 +17,9 @@ describe('logger-factory', function () {
   it('.create() should return "undefined" when disabled', function () {
     const options = {
       enabled: false,
-      name: 'name',
+      name: 'wadus',
       extra: {
-        role: 'role'
+        role: 'wadus-role'
       }
     }
     const logger = LoggerFactory.create({ options })

@@ -1,13 +1,15 @@
 import path from 'path'
 import readPkgUp from 'read-pkg-up'
 
-const pkg = readPkgUp.sync({
+const { pkg } = readPkgUp.sync({
   cwd: process.cwd(),
   normalize: false
-}).pkg
+})
 
 export default {
+  name: pkg.name,
   enabled: true,
-  console: (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined),
-  path: path.join(process.cwd(), pkg.name + '.log')
+  console: true,
+  file: true,
+  path: path.join(process.cwd(), `${pkg.name}.log`)
 }
