@@ -61,3 +61,18 @@ See `src/defaults.js` to check structure and default values.
 By default, there are two outputs available:
   - Console output is set to `stdout` at the `debug` level when `NODE_ENV` is `development` or `undefined`
   - File output is set to `file` at the `info` level when neither `NODE_ENV` is `development` nor `undefined`
+
+## Advanced
+
+`metallic-logger` is meant to be used along `metallic`'s modules. It exposes a common interface to encapsulate logging internals but it provides access to `bunyan`'s object:
+
+```js
+const logger = Logger.create({ options })
+
+const bunyan = logger.provider
+
+bunyan.info('Hi there!, I\'m bunyan')
+// -> {"name":"my-app","hostname":"localhost","pid":12018,"level":20,"msg":"Hi there!, I'm bunyan","time":"2017-02-13T13:47:32.521Z","v":0}
+```
+
+For further configuration, please go to [bunyan's repository](https://github.com/trentm/node-bunyan)
