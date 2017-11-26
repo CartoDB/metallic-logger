@@ -1,4 +1,5 @@
 import { ListenerInterface } from 'metallic-listeners'
+import { ParentClassError } from 'metallic-errors'
 
 export default class LoggerSighupListenerMixin {
   static mix (superclass) {
@@ -6,10 +7,21 @@ export default class LoggerSighupListenerMixin {
       constructor ({ sighupListener }) {
         super(...arguments)
 
-        if (sighupListener instanceof ListenerInterface) {
-          this.sighupListener = sighupListener
-          this.sighupListener.listen(() => this.reopenFileStreams())
+        if (!(sighupListener instanceof ListenerInterface)) {
+          throw new ParentClassError(sighupListener.constructor.name, ListenerInterface.name)
         }
+
+        this.sighupListener = sighupListener
+      }
+
+      async run () {
+        this.sighupListener.listen(() => this.reopenFileStreams())
+        return super.run()
+      }
+
+      async close () {
+        this.sighupListener.remove()
+        return super.close()
       }
     }
   }

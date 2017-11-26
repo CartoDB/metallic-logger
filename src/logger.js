@@ -6,6 +6,10 @@ export default class Logger extends LoggerInterface {
     this.provider = provider
   }
 
+  async run () {}
+
+  async close () {}
+
   reopenFileStreams () {
     this.provider.reopenFileStreams()
   }

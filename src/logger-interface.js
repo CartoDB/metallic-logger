@@ -1,10 +1,12 @@
 import { AbstractClassError, UnimplementedError } from 'metallic-errors'
+import { RunnerInterface } from 'metallic-interfaces'
 
-export default class LoggerInterface {
+export default class LoggerInterface extends RunnerInterface {
   constructor () {
     if (new.target === LoggerInterface) {
       throw new AbstractClassError(LoggerInterface.name)
     }
+    super()
   }
 
   reopenFileStreams () {

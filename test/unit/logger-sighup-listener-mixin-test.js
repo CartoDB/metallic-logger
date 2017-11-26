@@ -5,10 +5,7 @@ import LoggerInterface from '../../src/logger-interface'
 import DummyLogger from '../support/dummy-logger'
 import LoggerSighupListenerMixin from '../../src/logger-sighup-listener-mixin'
 import SighupListener from '../../src/sighup-listener'
-
-class DummyListener {
-  listen () {}
-}
+import { ParentClassError } from 'metallic-errors'
 
 describe('logger-sighup-listener-mixin', function () {
   beforeEach(function () {
@@ -37,26 +34,19 @@ describe('logger-sighup-listener-mixin', function () {
   it('should reopen file streams when message event is emitted', async function () {
     const loggerReopenFileStreamSpy = this.sandbox.spy(this.logger, 'reopenFileStreams')
 
+    await this.logger.run()
     this.emitter.emit('SIGHUP')
-    await new Promise(resolve => resolve())
+    await this.logger.close()
 
     assert.ok(loggerReopenFileStreamSpy.calledOnce)
   })
 
-  it('should not attach handler to emitter', async function () {
+  it('should throw ParentClassError when listener is not an instance of ListenerInterface', async function () {
+    class InvalidDummyListener {}
     const EventedLogger = LoggerSighupListenerMixin.mix(DummyLogger)
+    const sighupListener = new InvalidDummyListener()
+    const provider = new DummyLogger()
 
-    this.emitter = new EventEmitter()
-    this.sighupListener = new DummyListener(this.emitter)
-    this.provider = new DummyLogger()
-
-    const sighupListenerListenSpy = this.sandbox.spy(this.sighupListener, 'listen')
-
-    this.logger = new EventedLogger({
-      sighupListener: this.sighupListener,
-      provider: this.provider
-    })
-
-    assert.ok(sighupListenerListenSpy.notCalled)
+    assert.throws(() => new EventedLogger({ sighupListener, provider }), ParentClassError)
   })
 })
