@@ -1,5 +1,10 @@
 # Metallic Logger ChangeLog
 
+## v0.10.0 (2017-mm-dd)
+
+ - Implement run and close methods to attach and detach listeners
+
+
 ## v0.9.0 (2017-11-19)
 
  - Update deps:
