@@ -3,24 +3,14 @@ import LoggerFactory, { LoggerInterface } from '../../src'
 
 describe('logger-factory', function () {
   it('.create() should return a Logger instance', function () {
-    const options = {
-      name: 'wadus',
-      extra: {
-        role: 'wadus-role'
-      }
-    }
-    const logger = LoggerFactory.create({ options })
+    const logger = LoggerFactory.create({})
 
     assert.ok(logger instanceof LoggerInterface)
   })
 
   it('.create() should return "undefined" when disabled', function () {
     const options = {
-      enabled: false,
-      name: 'wadus',
-      extra: {
-        role: 'wadus-role'
-      }
+      enabled: false
     }
     const logger = LoggerFactory.create({ options })
 
