@@ -11,7 +11,7 @@ import LoggerLogCommandListenerMixin from './logger-log-command-listener-mixin'
 import defaults from './defaults'
 
 export default class LoggerFactory extends FactoryInterface {
-  static create ({ options }) {
+  static create ({ options } = {}) {
     const opts = { ...defaults, ...options }
 
     if (!opts.enabled) {
