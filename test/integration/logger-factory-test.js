@@ -3,7 +3,7 @@ import LoggerFactory, { LoggerInterface } from '../../src'
 
 describe('logger-factory', function () {
   it('.create() should return a Logger instance', function () {
-    const logger = LoggerFactory.create({})
+    const logger = LoggerFactory.create()
 
     assert.ok(logger instanceof LoggerInterface)
   })
