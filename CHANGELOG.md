@@ -3,6 +3,10 @@
 ## v0.10.0 (2017-mm-dd)
 
  - Implement run and close methods to attach and detach listeners
+ - Add travis support
+ - Default to an empty object first factory argument
+ - Improve source-map integration for error stack traces
+ - Ignore coverage folder while publishing
 
 
 ## v0.9.0 (2017-11-19)
