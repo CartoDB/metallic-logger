@@ -1,6 +1,6 @@
 # Metallic Logger ChangeLog
 
-## v0.10.0 (2017-mm-dd)
+## v0.10.0 (2017-12-10)
 
  - Implement run and close methods to attach and detach listeners
  - Add travis support
