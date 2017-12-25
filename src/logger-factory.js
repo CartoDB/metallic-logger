@@ -19,12 +19,12 @@ export default class LoggerFactory extends FactoryInterface {
     }
 
     const isConsoleOutputEnabled = opts.console
-    const ifFileOutputEnabled = opts.file
+    const isFileOutputEnabled = opts.file
     const path = opts.path
 
     const loggerOutputs = new LoggerOutputs()
       .add(new ConsoleOutput(isConsoleOutputEnabled))
-      .add(new FileOutput(ifFileOutputEnabled, path))
+      .add(new FileOutput(isFileOutputEnabled, path))
 
     const bunyan = Bunyan.createLogger({
       name: opts.name,

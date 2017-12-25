@@ -1,7 +1,7 @@
 import LoggerOutputInterface from './logger-output-interface'
 
 export default class FileOutput extends LoggerOutputInterface {
-  constructor (enabled, path) {
+  constructor (enabled = false, path) {
     super()
     this.level = 'info'
     this.enabled = enabled
@@ -9,7 +9,6 @@ export default class FileOutput extends LoggerOutputInterface {
   }
 
   isAvailable () {
-    const { NODE_ENV } = process.env
-    return this.enabled && NODE_ENV !== 'development' && NODE_ENV !== undefined
+    return this.enabled
   }
 }

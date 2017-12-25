@@ -1,7 +1,7 @@
 import LoggerOutputInterface from './logger-output-interface'
 
 export default class ConsoleOutput extends LoggerOutputInterface {
-  constructor (enabled = true) {
+  constructor (enabled = false) {
     super()
     this.level = 'debug'
     this.stream = process.stdout
@@ -9,7 +9,6 @@ export default class ConsoleOutput extends LoggerOutputInterface {
   }
 
   isAvailable () {
-    const { NODE_ENV } = process.env
-    return this.enabled && (NODE_ENV === 'development' || NODE_ENV === undefined)
+    return this.enabled
   }
 }
