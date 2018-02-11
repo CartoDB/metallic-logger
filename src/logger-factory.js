@@ -1,3 +1,4 @@
+import path from 'path'
 import { FactoryInterface } from 'metallic-interfaces'
 import Bunyan from 'bunyan'
 import Logger from './logger'
@@ -20,11 +21,11 @@ export default class LoggerFactory extends FactoryInterface {
 
     const isConsoleOutputEnabled = opts.console
     const isFileOutputEnabled = opts.file
-    const path = opts.path
+    const outputFilePath = opts.name ? path.join(process.cwd(), `${opts.name}.log`) : opts.path
 
     const loggerOutputs = new LoggerOutputs()
       .add(new ConsoleOutput(isConsoleOutputEnabled))
-      .add(new FileOutput(isFileOutputEnabled, path))
+      .add(new FileOutput(isFileOutputEnabled, outputFilePath))
 
     const bunyan = Bunyan.createLogger({
       name: opts.name,
