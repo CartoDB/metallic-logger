@@ -1,4 +1,3 @@
-import path from 'path'
 import { FactoryInterface } from 'metallic-interfaces'
 import Bunyan from 'bunyan'
 import Logger from './logger'
@@ -9,11 +8,11 @@ import SighupListener from './sighup-listener'
 import LoggerSighupListenerMixin from './logger-sighup-listener-mixin'
 import LogCommandListener from './log-command-listener'
 import LoggerLogCommandListenerMixin from './logger-log-command-listener-mixin'
-import defaults from './defaults'
+import config from './config'
 
 export default class LoggerFactory extends FactoryInterface {
   static create ({ options } = {}) {
-    const opts = { ...defaults, ...options }
+    const opts = config(options)
 
     if (!opts.enabled) {
       return
@@ -21,7 +20,7 @@ export default class LoggerFactory extends FactoryInterface {
 
     const isConsoleOutputEnabled = opts.console
     const isFileOutputEnabled = opts.file
-    const outputFilePath = opts.name ? path.join(process.cwd(), `${opts.name}.log`) : opts.path
+    const outputFilePath = opts.path
 
     const loggerOutputs = new LoggerOutputs()
       .add(new ConsoleOutput(isConsoleOutputEnabled))
