@@ -1,5 +1,20 @@
 # Metallic Logger ChangeLog
 
+## v0.11.0 (2018-02-23)
+
+ - Use name from options to build file path
+ - Delegate to default options whether to enable logger outputs
+ - Update deps:
+   + metallic-errors: 0.3.0
+   + metallic-interfaces: 0.4.0
+   + metallic-listeners: 0.5.0
+ - Update devel deps:
+   + mocha: ^5.0.1
+   + nyc: ^11.4.1
+   + sinon: ^4.4.0
+   + standard: ^11.0.0
+
+
 ## v0.10.0 (2017-12-10)
 
  - Implement run and close methods to attach and detach listeners
