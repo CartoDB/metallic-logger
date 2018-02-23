@@ -1,5 +1,10 @@
 # Metallic Logger ChangeLog
 
+## v0.11.1 (2018-02-23)
+
+ - Fix filepath configuration for file stream
+
+
 ## v0.11.0 (2018-02-23)
 
  - Use name from options to build file path
